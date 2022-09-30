@@ -1684,7 +1684,7 @@ body {
 }
 
 .cursor-pointer {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 
@@ -1696,4 +1696,9 @@ body {
   font-size: 15px;
   margin-left: 15px;
   color: #f6cb0d;
+  cursor: pointer
+}
+.mat-snack-bar-container{
+  background: white;
+  color:black;
 }

@@ -1,20 +1,21 @@
 <mat-toolbar style="background: #343a40!important">
   <mat-toolbar-row>
-    <span>Mobile Plan</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+    <span  style="font-size:15px;margin-left:15px;cursor: pointer;" class="cursor-pointer"
+    (click)="gettingStarted()">Mobile Plan</span>
+    <span style="font-size:15px;margin-left:15px;cursor: pointer;" class="cursor-pointer"
       (click)="createPlan()">Create</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+    <span style="font-size:15px;margin-left:15px;cursor: pointer" class="cursor-pointer"
       (click)="viewPlan()">View</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+    <span style="font-size:15px;margin-left:15px;cursor: pointer" class="cursor-pointer"
       (click)="searchPlan()">Search
      </span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+    <span style="font-size:15px;margin-left:15px;cursor: pointer" class="cursor-pointer"
       (click)="updatePlan()">Update
      </span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+    <span style="font-size:15px;margin-left:15px;cursor: pointer" class="cursor-pointer"
       (click)="deletePlan()">Delete
      </span>
-    <span class="cursor-pointer selectedTab" (click)="aboutUS()">About
+    <span class="cursor-pointer selectedTab" style="cursor: pointer" (click)="aboutUS()">About
       Us</span>
 
   </mat-toolbar-row>

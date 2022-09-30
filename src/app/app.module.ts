@@ -12,7 +12,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule} from '@angular/material/icon';
 import { MatCardModule} from '@angular/material/card';
 import { MatDialogModule} from '@angular/material/dialog';
-
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -44,6 +44,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ReactiveFormsModule,
     HttpClientModule,
     MatDialogModule,
+    MatSnackBarModule,
     ToastrModule.forRoot({
       timeOut: 3500,
       positionClass: 'toast-bottom-center',

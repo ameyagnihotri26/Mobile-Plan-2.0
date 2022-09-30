@@ -1,6 +1,7 @@
 <mat-toolbar style="background: #343a40!important">
     <mat-toolbar-row>
-        <span class="cursor-pointer">Mobile Plan</span>
+        <span  style="font-size:15px;margin-left:15px;cursor: pointer;" class="cursor-pointer"
+        (click)="gettingStarted()">Mobile Plan</span>
         <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="createPlan()" >Create</span>
         <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="viewPlan()">View</span>
         <span  class="cursor-pointer selectedTab" (click)="searchPlan()">Search</span>

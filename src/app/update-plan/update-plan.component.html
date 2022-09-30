@@ -33,7 +33,7 @@
 
             <div style="margin-top:15px;width:100%">
                 <label class="form-label"><b>Plan Name*</b></label><br>
-                <input [(ngModel)] ="planName"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;margin-top:3px" type="text" id = "name" class="form-control mb-3"><br>
+                <input [(ngModel)] ="planName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode == 32) || (event.charCode > 96 && event.charCode < 123)"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" type="text" id = "name" class="form-control mb-3"><br>
                 <span class="text-danger" *ngIf="planNameRequired && (planName =='' || planName ==undefined) ">Please Enter Plan Name</span>
             </div>
             

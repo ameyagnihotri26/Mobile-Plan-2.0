@@ -37,9 +37,11 @@ export class AboutusComponent implements OnInit {
     this.router.navigate(['./aboutus']);
   }
 
-  gettingStarted(){
+  gettingStarted() {
     this.router.navigate(['./redirect']);
   }
 
-  updatePlan(){}
+  updatePlan() {
+    this.router.navigate(['./update']);
+  }
 }

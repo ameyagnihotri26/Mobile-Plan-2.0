@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SnackbarComponent } from '../snackbar/snackbar.component';
+
 
 @Component({
   selector: 'app-update-plan',
@@ -15,6 +18,11 @@ export class UpdatePlanComponent implements OnInit {
   planValidity: any;
   planDesc: any;
 
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  durationInSeconds = 1;
+
+
   notExist: boolean = false;
   planIdRequired: boolean = false;
   planNameRequired : boolean = false;
@@ -23,7 +31,8 @@ export class UpdatePlanComponent implements OnInit {
 
   constructor(private router: Router,
     public route:ActivatedRoute,
-    public toast: ToastrService) 
+    public toast: ToastrService,
+    private snackBar: MatSnackBar) 
     {
       this.route.queryParams
       .subscribe(params => {
@@ -135,6 +144,11 @@ export class UpdatePlanComponent implements OnInit {
      this.planDesc = '';
      this.notExist = false;
     }
+    this.snackBar.open('Plan Updated Successfully', '', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+      duration: this.durationInSeconds * 1000,
+    });
     this.router.navigate(['./viewall']);
   }
   }
@@ -152,6 +166,7 @@ export class UpdatePlanComponent implements OnInit {
         description: this.planDesc,
       }),
     });
+  
     this.router.navigate(['./viewall']);
     
   }

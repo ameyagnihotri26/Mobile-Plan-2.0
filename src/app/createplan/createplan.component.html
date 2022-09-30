@@ -1,6 +1,7 @@
 <mat-toolbar style="background: #343a40!important">
     <mat-toolbar-row>
-        <span (click)="gettingStarted()">Mobile Plan</span>
+        <span  style="font-size:15px;margin-left:15px;cursor: pointer;" class="cursor-pointer"
+        (click)="gettingStarted()">Mobile Plan</span>
         <span  class="cursor-pointer selectedTab" (click)="createPlan()" >Create</span>
         <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="viewPlan()">View</span>
         <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="searchPlan()">Search</span>
@@ -33,7 +34,7 @@
 
             <div style="margin-top:15px;width:100%">
                 <label class="form-label"><b>Plan Name*</b></label><br>
-                <input [(ngModel)] ="planName"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" type="text" id = "name" class="form-control mb-3"><br>
+                <input [(ngModel)] ="planName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode == 32) || (event.charCode > 96 && event.charCode < 123)"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" type="text" id = "name" class="form-control mb-3"><br>
                 <span class="text-danger" *ngIf="planNameRequired && (planName =='' || planName ==undefined) ">Please Enter Plan Name</span>
             </div>
             
@@ -58,7 +59,7 @@
                 <div class="plan-added-css">
                     <span >Plan Created</span>
                 </div>
-              
+
             </div>
             <!-- <br>
             <p id = "validationID"></p>

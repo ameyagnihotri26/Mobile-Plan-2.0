@@ -32,19 +32,29 @@
                 <label class="form-label mb-3" style="font-size:15px;font-weight:550">Delete Plan by ID *</label>
                 <form class="d-flex" role="search"  style="margin-top:10px">
                     <input [(ngModel)] ="getId"  class="form-control me-2 mb-3"  style="width: 96%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" [ngModelOptions]="{standalone: true}"
-                    type="number" onkeydown="javascript: return
-                        ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code)
-                        ? true : !isNaN(Number(event.key)) &&
-                        event.code!=='Space'" id="id" placeholder="Enter ID">
+                    type="number" (keypress)="checkInputId($event)" id="id" placeholder="Enter ID">
                 </form>
+            </div> 
+            <div *ngIf = "requiredId"> 
+                <span class="text-danger" >Please Enter ID </span>
+            </div>
+            <div *ngIf = "respStatus == 404"> 
+                <span class="text-danger" >ID Not Found </span>
+            </div>
+            
+           <br>
+            <div *ngIf="respStatus == 200" >
+                <div class="plan-added-css">
+                    <span >Deleted Successfully</span>
+                </div>
             </div>
             <br>
-            <p id="validationID"></p>
-            <br>
+            
+         
             <div class="text-center">
                 <!-- <button type="button" class="btn btn-danger" id="delete">Delete
                     <span class="bi bi-trash red-color"></span></button> -->
-            <button type="button" (click)="searchPlan()" class="btn btn-success cursor-pointer" style="padding: 2px 8px;background: #dc3545;border:1px solid #dc3545;color:white;border-radius:5px ; " > Delete
+            <button type="button" (click)="openDialog(getId)" class="btn btn-success cursor-pointer" style="padding: 2px 8px;background: #dc3545;border:1px solid #dc3545;color:white;border-radius:5px ; " > Delete
                 <mat-icon style="font-size:18px;vertical-align: middle;margin-top:6px" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
             </button>
 

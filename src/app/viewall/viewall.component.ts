@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
@@ -11,10 +12,15 @@ import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationd
 export class ViewallComponent implements OnInit {
 
   getAllUser: any;
+  durationInSeconds = 5;
+
+
   constructor(private router: Router,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
+   
     this.getUser();
   }
 

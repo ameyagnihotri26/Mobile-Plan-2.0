@@ -1,53 +1,62 @@
 <mat-toolbar style="background: #343a40!important">
-<mat-toolbar-row>
-    <span class="cursor-pointer">Mobile Plan</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="createPlan()" >Create</span>
-    <span  class="cursor-pointer selectedTab" (click)="viewPlan()">View</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="searchPlan()">Search</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="updatePlan(0)">Update</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="deletePlan()">Delete</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="aboutUS()">About Us</span>
+  <mat-toolbar-row>
+    <span class="cursor-pointer" (click)="gettingStarted()">Mobile Plan</span>
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+      (click)="createPlan()">Create</span>
+    <span class="cursor-pointer selectedTab" (click)="viewPlan()">View</span>
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+      (click)="searchPlan()">Search</span>
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+      (click)="updatePlan('')">Update</span>
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+      (click)="deletePlan()">Delete</span>
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+      (click)="aboutUS()">About Us</span>
 
     <!-- <div style="width:90%"><span>Mobile Plan</span></div>
     <div (click)="createPlan()" style="width:10%"><span>Create Plan</span></div>
     <div style="width:10%"><span>Mobile Plan</span></div> -->
-
   </mat-toolbar-row>
 </mat-toolbar>
 
 
-<div  style="background-image:url(../../assets/latestbg.png) ;height:86%;padding-top:20px">
-    <mat-card style="width:50%;margin-left:25%">
-      <div class="tableWrap">
-        <table style="width:100%;" align="center" >
-          <thead style="margin-bottom:20px">
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Validity</th>
-              <th>Description</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-           <tbody>
-            <tr *ngFor="let item of getAllUser" align="center" >
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.validity}}</td>
-              <td>{{item.description}}</td>
-              
-            <td align="center" >
-                <mat-icon (click)="updatePlan(item.id)" style="font-size:18px;vertical-align: middle;cursor: pointer;" aria-hidden="false" aria-label="Example home icon" fontIcon="edit"></mat-icon>
-                <mat-icon (click)="openDialog(item.id)" style="font-size:18px;vertical-align: middle;cursor: pointer;" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+<div style="background-image:url(../../assets/latestbg.png)
+  ;height:86%;padding-top:20px">
+  <mat-card style="width:50%;margin-left:25%">
+    <div class="tableWrap">
+      <table style="width:100%;" align="center">
+        <thead style="margin-bottom:20px">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Validity</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of getAllUser" align="center">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.validity}}</td>
+            <td>{{item.description}}</td>
+
+            <td align="center">
+              <mat-icon (click)="updatePlan(item.id)"
+                style="font-size:18px;vertical-align: middle;cursor: pointer;"
+                aria-hidden="false" aria-label="Example home icon"
+                fontIcon="edit"></mat-icon>
+              <mat-icon (click)="openDialog(item.id)"
+                style="font-size:18px;vertical-align: middle;cursor: pointer;"
+                aria-hidden="false" aria-label="Example home icon"
+                fontIcon="delete"></mat-icon>
             </td>
-            </tr>
-           </tbody>
-            <!-- <div style="height:200px !important;overflow:auto">
+          </tr>
+        </tbody>
+        <!-- <div style="height:200px !important;overflow:auto">
               
             </div> -->
-           
-           
-          </table>
-          </div>
-    </mat-card>
+      </table>
+    </div>
+  </mat-card>
 </div>
