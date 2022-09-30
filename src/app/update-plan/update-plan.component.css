@@ -1,0 +1,41 @@
+.mat-toolbar-multiple-rows {
+  min-height: 53px;
+  color: white;
+}
+
+.card-body {
+  padding: 20px
+}
+
+.btn-outline-success {
+  color: #28a745;
+  border-color: #28a745
+}
+
+.text-center {
+  text-align: center !important
+}
+
+.mt-4,
+.my-4 {
+  margin-top: 20px !important
+}
+
+.btn-lg {
+  padding: 4px 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: .3rem
+}
+
+.plan-added-css {
+  width: 92%;
+  background: rgb(133, 251, 122);
+  /* margin-left: 25%; */
+  font-size: 16px;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: 500;
+
+}
