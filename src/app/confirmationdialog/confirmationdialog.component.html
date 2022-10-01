@@ -1,0 +1,14 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
+<div mat-dialog-content>
+  <p style="font-size:18px;font-weight:500">Do yoy want to Proceed?</p>
+ 
+</div>
+<div mat-dialog-actions class="text-center">
+  <!-- <button mat-button (click)="cancel()">Cancel</button>&nbsp;
+  <button mat-button (click)="remove()" cdkFocusInitial>Delete</button> -->
+
+  <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer" (click)="cancel()">
+    Cancel</button>&nbsp;&nbsp;
+  <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer" (click)="remove()">
+    Delete</button>
+</div>

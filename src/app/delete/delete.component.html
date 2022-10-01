@@ -1,0 +1,64 @@
+<mat-toolbar style="background: #343a40!important">
+    <mat-toolbar-row>
+        <span (click)="gettingStarted()" class="cursor-pointer">Mobile Plan</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="createPlan()">Create</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="viewPlan()">View</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="searchPlan()">Search</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="updatePlan()">Update</span>
+        <span  class="cursor-pointer selectedTab"
+            (click)="deletePlan()">Delete</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="aboutUS()">About
+            Us</span>
+
+        <!-- <div style="width:90%"><span>Mobile Plan</span></div>
+        <div (click)="createPlan()" style="width:10%"><span>Create Plan</span></div>
+        <div style="width:10%"><span>Mobile Plan</span></div> -->
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="background-image:url(../../assets/latestbg.png) ;height:89%;padding-top:2%">
+    <mat-card style="width:45%;margin-left:27%;padding:30px">
+        <div class="card shadow p-3 mb-5 bg-body rounded">
+            <div class="card-body">
+                <div style="position: absolute; bottom: 0; right: 0; ;
+                    text-align:right;">
+
+                    <p><small>* fields are compulsory</small></p>
+
+                </div>
+             
+                <label style="font-weight:570;font-size:30px">Delete Your Mobile Plan</label><br><br>
+                <label class="form-label mb-3" style="font-size:15px;font-weight:550">Delete Plan by ID *</label>
+                <form class="d-flex" role="search"  style="margin-top:10px">
+                    <input [(ngModel)] ="getId"  class="form-control me-2 mb-3"  style="width: 96%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" [ngModelOptions]="{standalone: true}"
+                    type="number" (keypress)="checkInputId($event)" id="id" placeholder="Enter ID">
+                </form>
+            </div> 
+            <div *ngIf = "requiredId"> 
+                <span class="text-danger" >Please Enter ID </span>
+            </div>
+            <div *ngIf = "respStatus == 404"> 
+                <span class="text-danger" >ID Not Found </span>
+            </div>
+            
+           <br>
+            <div *ngIf="respStatus == 200" >
+                <div class="plan-added-css">
+                    <span >Deleted Successfully</span>
+                </div>
+            </div>
+            <br>
+            
+         
+            <div class="text-center">
+                <!-- <button type="button" class="btn btn-danger" id="delete">Delete
+                    <span class="bi bi-trash red-color"></span></button> -->
+            <button type="button" (click)="openDialog(getId)" class="btn btn-success cursor-pointer" style="padding: 2px 8px;background: #dc3545;border:1px solid #dc3545;color:white;border-radius:5px ; " > Delete
+                <mat-icon style="font-size:18px;vertical-align: middle;margin-top:6px" aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+            </button>
+
+            </div>
+        </div>
+
+    </mat-card>
+</div>

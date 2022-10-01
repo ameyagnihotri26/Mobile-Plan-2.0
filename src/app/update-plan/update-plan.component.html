@@ -1,0 +1,74 @@
+<mat-toolbar style="background: #343a40!important">
+    <mat-toolbar-row>
+        <span (click)="gettingStarted()" class="cursor-pointer">Mobile Plan</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="createPlan()" >Create</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="viewPlan()">View</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="searchPlan()">Search</span>
+        <span  class="cursor-pointer selectedTab" (click)="updatePlan()">Update</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="deletePlan()">Delete</span>
+        <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="aboutUS()">About Us</span>
+    
+        <!-- <div style="width:90%"><span>Mobile Plan</span></div>
+        <div (click)="createPlan()" style="width:10%"><span>Create Plan</span></div>
+        <div style="width:10%"><span>Mobile Plan</span></div> -->
+    
+      </mat-toolbar-row>
+    </mat-toolbar>
+<div style="background-image:url(../../assets/latestbg.png) ;height:89%;padding-top:2%">
+    <mat-card style="width:50%;margin-left:25%;">
+        
+        <div class="card-body">
+            <div style="position: absolute; bottom: 0; right: 0; ; text-align:right;">
+
+                <p><small>* fields are compulsory</small></p>
+
+              </div>
+            <label style="font-weight:650;font-size:30px;">Update a Mobile Plan</label><br><br>
+            <div class="col" style="margin-top:15px;width:100%">
+                <label class="form-label"><b>Plan ID*</b></label><br>
+                <input [(ngModel)] ="planId"  type="number" style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;margin-top:3px"  onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"id = "id" class="form-control mb-3"><br>
+                <span class="text-danger" *ngIf="planIdRequired && planId == undefined">Please Enter Plan ID</span>
+            </div>
+
+
+            <div style="margin-top:15px;width:100%">
+                <label class="form-label"><b>Plan Name*</b></label><br>
+                <input [(ngModel)] ="planName" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode == 32) || (event.charCode > 96 && event.charCode < 123)"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" type="text" id = "name" class="form-control mb-3"><br>
+                <span class="text-danger" *ngIf="planNameRequired && (planName =='' || planName ==undefined) ">Please Enter Plan Name</span>
+            </div>
+            
+
+            <div style="margin-top:15px;width:100%">
+                <label class="form-label"><b>Plan Validity*</b></label><br>
+                <input [(ngModel)] ="planValidity"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;margin-top:3px" type="number" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" id = "validity" class="form-control mb-3"><br>
+                <span class="text-danger" *ngIf="planValidityRequired && planValidity == undefined">Please Enter Plan Validity</span>
+            </div>
+
+            <div style="margin-top:15px;width:100%">
+                <label class="form-label"><b>Plan Description</b></label><br>
+                <textarea [(ngModel)] ="planDesc"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;margin-top:3px" class="form-control" id="description">
+                </textarea>
+            </div>
+
+            <div *ngIf="notExist">
+                <span class="text-danger" >Mobile Plan Not Exists</span>
+            </div>
+
+            <div *ngIf="respStatus == 201">
+                <div class="plan-added-css">
+                    <span >Plan Updated</span>
+                </div>
+              
+            </div>
+            <!-- <br>
+            <p id = "validationID"></p>
+            <br> -->
+            <div class="text-center">
+                <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer " (click)="submitPlan()">
+                    Update</button>&nbsp;&nbsp;
+                    <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer" (click)="resetData()">
+                        Reset</button>
+            </div>        
+        </div>
+    </mat-card>
+</div>
