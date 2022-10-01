@@ -26,7 +26,7 @@
             <label style="font-weight:650;font-size:30px;">Update a Mobile Plan</label><br><br>
             <div class="col" style="margin-top:15px;width:100%">
                 <label class="form-label"><b>Plan ID*</b></label><br>
-                <input [(ngModel)] ="planId"  type="number" style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;margin-top:3px"  onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"id = "id" class="form-control mb-3"><br>
+                <input [disabled]="getPlanId != ''" [(ngModel)] ="planId"  type="number" style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;margin-top:3px"  onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"id = "id" class="form-control mb-3"><br>
                 <span class="text-danger" *ngIf="planIdRequired && planId == undefined">Please Enter Plan ID</span>
             </div>
 

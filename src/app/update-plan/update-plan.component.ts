@@ -42,6 +42,7 @@ export class UpdatePlanComponent implements OnInit {
         // console.log(this.getPlanId); // price
       }
     );
+    if(this.getPlanId == '')
       console.log("getID:"+this.getPlanId);
    }
 

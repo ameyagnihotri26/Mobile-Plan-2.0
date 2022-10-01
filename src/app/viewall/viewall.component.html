@@ -35,18 +35,18 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of getAllUser" align="center">
-            <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.validity}}</td>
-            <td>{{item.description}}</td>
+            <td style="padding:5px">{{item.id}}</td>
+            <td style="padding:5px">{{item.name}}</td>
+            <td style="padding:5px">{{item.validity}}</td>
+            <td style="padding:5px">{{item.description}}</td>
 
-            <td align="center">
+            <td align="center" style="padding:5px">
               <mat-icon (click)="updatePlan(item.id)"
-                style="font-size:18px;vertical-align: middle;cursor: pointer;"
+                style="font-size:20px;vertical-align: middle;cursor: pointer;color:blue"
                 aria-hidden="false" aria-label="Example home icon"
                 fontIcon="edit"></mat-icon>
               <mat-icon (click)="openDialog(item.id)"
-                style="font-size:18px;vertical-align: middle;cursor: pointer;"
+                style="font-size:20px;vertical-align: middle;cursor: pointer;color:red"
                 aria-hidden="false" aria-label="Example home icon"
                 fontIcon="delete"></mat-icon>
             </td>
