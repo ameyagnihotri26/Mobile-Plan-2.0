@@ -3,30 +3,100 @@
     <span class="cursor-pointer" (click)="gettingStarted()">Mobile Plan</span>
     <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
       (click)="createPlan()">Create</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer" (click)="viewPlan()">View</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer selectedTab"
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
+      (click)="viewPlan()">View</span>
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer
+      selectedTab"
       (click)="searchPlan()">Search</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer  "
+    <span style="font-size:15px;margin-left:15px" class="cursor-pointer "
       (click)="aboutUS()">About Us</span>
-      <mat-select>
-    <mat-option value="option1">Option 1</mat-option>
-    <mat-option value="option2">Option 2</mat-option>
-    <mat-option value="option3">Option 3</mat-option>
-  </mat-select>
+   
 
-    <!-- <div style="width:90%"><span>Mobile Plan</span></div>
-    <div (click)="createPlan()" style="width:10%"><span>Create Plan</span></div>
-    <div style="width:10%"><span>Mobile Plan</span></div> -->
   </mat-toolbar-row>
 </mat-toolbar>
+  
+<div style="height:87%;padding-top:2%">
+  <mat-card  style="width:80%;margin-left:10%;" >
+  <div class="row" style="width:100%;height:450px">
+    <div class="column" style="width:50%">
+      <label style="font-weight:650;font-size:30px;">Search a
+        Mobile Plan</label><br><br>
+      <label style="font-weight:500;font-size:15px;">Search
+        Mobile Plan using </label>
+      <mat-select class="mat-select-css" [(value)]="searchInputType" (selectionChange)="getSelectedSearchType($event)">
+        <mat-option value="id" selected>ID</mat-option>
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="validity">Validity</mat-option>
+        <mat-option value="description">Description</mat-option>
+      </mat-select><br><br>
+      <input *ngIf="searchInputType == 'id' || searchInputType == 'validity'" [(ngModel)]="searchText" style="width: 45%;padding:
+        10px;border-radius: 5px;border: 1px solid #b5afaf;"
+        [ngModelOptions]="{standalone: true}" type="number" placeholder="Search">
+        <input *ngIf="searchInputType != 'id' && searchInputType != 'validity' " [(ngModel)]="searchText" style="width: 45%;padding:
+        10px;border-radius: 5px;border: 1px solid #b5afaf;"
+        [ngModelOptions]="{standalone: true}" type="text" placeholder="Search">
+      <button type="button" (click)="searchPlan()" class="btn btn-success
+        cursor-pointer " id="getByID" style="padding: 9px;background:
+        #218838;border:1px solid #218838;color:white;border-radius:5px ; ">
+        Search<span class="bi bi-trash red-color"></span></button><br>
+      <span class="text-danger" *ngIf="searchRequired">Please enter search field</span>
+      <mat-card style="width:80%;;" *ngIf="!dataNotFound">
+        <table style="width:100%;border-radius:5px" *ngIf="getResult != 0">
+          <thead>
+            <tr align="center">
+              <th>ID</th>
+              <th>Name</th>
+              <th>Validity</th>
+              <th>Description</th>
+            </tr>
+          </thead>
 
-    <div style="height:89%;padding-top:2%">
+          <tbody>
+        
+              <tr *ngFor="let item of getResult" align="center">
+                <td style="padding:5px">{{item['id']}}</td>
+                <td style="padding:5px">{{item['name']}}</td>
+                <td style="padding:5px">{{item['validity']}}</td>
+                <td style="padding:5px">{{item['description']}}</td>
+  
+              </tr>
+          
+          </tbody>
+
+
+        </table>
+        </mat-card>
+
+        <mat-card *ngIf="dataNotFound">
+          <div>
+       
+            <div style="text-align: center;padding:4px">
+                 <img style="width: 50%;height:40%" src="../../assets/no data.jpg"
+                 alt="Photo of a Shiba Inu">
+                 <div style="text-align: center;">
+                  <label style="font-size:28px;font-weight:600">Plan not found.</label>
+                 </div>
+            </div>
+            </div>
+        </mat-card>
+
+      </div>
+      <div class="column" style="width:50%;height:100%">
+        <img style="width:100%;height:100%" src="../../assets/search1.png"
+          alt="Photo of a Shiba Inu">
+      </div>
+    </div>
+
+  </mat-card>
+  </div>
+
+
+  <!-- <div style="height:89%;padding-top:2%">
       <mat-card style="width:45%;margin-left:27%;padding:20px">
        <label style="font-weight:650;font-size:19px">Search a  Mobile Plan</label><br><br>
         <label class="form-label mb-3" style="font-size:15px"><b>Search by ID *</b></label>
         <form class="d-flex" role="search" style="margin-top:10px">
           <input [(ngModel)] ="searchText" style="width: 85%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" [ngModelOptions]="{standalone: true}" type="number" placeholder="Search" >
-            <!-- <input [(ngModel)] ="searchText" style="width: 70%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" class="form-control me-2" type="text"  onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" id = "boom"  placeholder="Search"> -->
             <button type="button" (click)="searchPlan()" class="btn btn-success cursor-pointer " id = "getByID" style="padding: 9px;background: #218838;border:1px solid #218838;color:white;border-radius:5px ; " > Search<span class="bi bi-trash red-color"></span></button><br>
           <span class="text-danger" *ngIf="searchRequired">Please enter search field</span>
         </form>
@@ -69,4 +139,4 @@
          </div>
        </div>
     </mat-card>
-    </div>
+    </div> -->

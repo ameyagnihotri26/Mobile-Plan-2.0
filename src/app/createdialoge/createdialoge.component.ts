@@ -9,13 +9,15 @@ import { DialogData } from '../confirmationdialog/confirmationdialog.component';
 })
 export class CreatedialogeComponent implements OnInit {
 
- 
+ getPlanId = '';
   constructor(
     public dialogRef: MatDialogRef<CreatedialogeComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
+    console.log(this.data.dataKey)
+    this.getPlanId = this.data.dataKey;
     // throw new Error('Method not implemented.');
   }
 

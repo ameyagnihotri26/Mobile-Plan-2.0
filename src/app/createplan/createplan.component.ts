@@ -100,10 +100,11 @@ export class CreateplanComponent implements OnInit {
 
   submitPlan = async () => {
 
-    if(this.planId == undefined || !this.planId){
-      this.planIdRequired = true;
-      return;
-    }else if(this.planName == '' || this.planName == undefined){
+    // if(this.planId == undefined || !this.planId){
+    //   this.planIdRequired = true;
+    //   return;
+    // }else 
+    if(this.planName == '' || this.planName == undefined){
       this.planNameRequired = true;
       return;
     }
@@ -120,7 +121,6 @@ export class CreateplanComponent implements OnInit {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: this.planId.toString(),
           name: this.planName,
           validity: this.planValidity.toString(),
           description: this.planDesc,
@@ -128,6 +128,8 @@ export class CreateplanComponent implements OnInit {
       });
   
       this.respStatus = response2.status;
+      let res = await response2.json();
+      this.getPlanId = res['id'];
       this.spinner.hide();
       if(this.respStatus == 400){
         this.alreadyExist = true;
@@ -135,7 +137,13 @@ export class CreateplanComponent implements OnInit {
       }
       if(this.respStatus == 201){
 
-        const dialogRef = this.dialog.open(CreatedialogeComponent);
+        // const dialogRef = this.dialog.open(CreatedialogeComponent);
+
+        const dialogRef = this.dialog.open(CreatedialogeComponent, {
+          data: {
+            dataKey: this.getPlanId
+          }
+        });
 
         dialogRef.afterClosed().subscribe(result => {
           console.log(`Dialog result: ${result}`);
@@ -164,6 +172,9 @@ export class CreateplanComponent implements OnInit {
     this.planDesc = '';
     this.alreadyExist = false;
     this.respStatus = undefined
+    this.planIdRequired  = false;
+    this.planNameRequired = false;
+    this.planValidityRequired = false;
   }
   updatePlan(){
     let response2 =  fetch("http://localhost:8080/mp", {
