@@ -21,12 +21,12 @@
 
 
 <div style="height:89%;padding-top:2%">
-  <mat-card style="width:50%;margin-left:25%">
+  <mat-card style="width:50%;margin-left:25%;border-radius: 30px;">
     <div class="tableWrap">
       <table style="width:100%;" align="center">
         <thead style="margin-bottom:20px">
           <tr>
-            <!-- <th>ID</th> -->
+            <th>ID</th>
             <th>Name</th>
             <th>Validity</th>
             <th>Description</th>
@@ -35,7 +35,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of getAllUser" align="center">
-            <!-- <td style="padding:10px">{{item.id}}</td> -->
+            <td style="padding:10px">{{item.id}}</td>
             <td style="padding:10px">{{item.name}}</td>
             <td style="padding:10px">{{item.validity}}</td>
             <td style="padding:10px">{{item.description}}</td>
@@ -52,9 +52,7 @@
             </td>
           </tr>
         </tbody>
-        <!-- <div style="height:200px !important;overflow:auto">
-              
-            </div> -->
+    
       </table>
     </div>
   </mat-card>

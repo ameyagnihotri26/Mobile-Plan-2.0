@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +15,7 @@ export class SearchComponent implements OnInit {
   dataNotFound = false;
   searchRequired = false;
   searchInputType: string = 'id';
+  dialog: any;
 
   constructor(private router: Router,
     private httpClient : HttpClient) { }
@@ -25,9 +27,11 @@ export class SearchComponent implements OnInit {
   
   updatePlan(data: any) {
     console.log(data);
-    this.router.navigate(['./update']);
+    this.router.navigate(['/update/'],{ queryParams: { id:data } });
   }
 
+
+  
  
   removePlan(id: any) {
     console.log("Show ID:" + id);
@@ -82,18 +86,29 @@ export class SearchComponent implements OnInit {
     }else{
       this.dataNotFound = false;
     }
-    console.log("get Single User:" + JSON.stringify(res));
-    for(let j=0;j< res.length;j++){
+    if (res instanceof Array) {
+      //JSON Array
+      for(let j=0;j< res.length;j++){
+        let getObject = {
+          id : res[j].id,
+          name: res[j].name,
+          description: res[j].description,
+          validity: res[j].validity
+        }
+        // var gett = res;
+        this.getResult.push(getObject);
+      }
+    } else {
+      //JSON Object 
       let getObject = {
-        id : res[j].id,
-        name: res[j].name,
-        description: res[j].description,
-        validity: res[j].validity
+        id : res.id,
+        name: res.name,
+        description: res.description,
+        validity: res.validity
       }
       // var gett = res;
       this.getResult.push(getObject);
     }
-  
 
   };
 
@@ -104,3 +119,4 @@ this.searchInputType = event.value;
   }
 
 }
+
