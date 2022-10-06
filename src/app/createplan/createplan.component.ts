@@ -152,6 +152,7 @@ export class CreateplanComponent implements OnInit {
        var myTimeout = setTimeout('MobilePlan', 5000);
        this.planId = undefined
        this.planName = '';
+       this.planNameRequired = false;
        this.planValidity = undefined;
        this.planDesc = '';
        this.alreadyExist = false;

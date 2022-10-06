@@ -1,6 +1,7 @@
 .btn-outline-success {
     color: #28a745;
-    border-color: #28a745
+    /* border-color: #28a745 */
+    border: 1px solid gray;
 }
 
 .text-center {

@@ -95,12 +95,15 @@ export class UpdatePlanComponent implements OnInit {
 
   
   resetData(){
-    this.planId = undefined
+    //this.planId = undefined
     this.planName = '';
     this.planValidity = undefined;
     this.planDesc = '';
     this.notExist = false;
     this.respStatus == undefined;
+    this.planIdRequired  = false;
+    this.planNameRequired = false;
+    this.planValidityRequired = false;
   }
 
   submitPlan = async () => {

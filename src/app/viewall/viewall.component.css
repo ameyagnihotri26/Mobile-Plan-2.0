@@ -3,8 +3,8 @@ nav {
   }
 
   table, th, td {
-    border:1px solid rgb(156 151 151);
-    /* border-collapse: collapse; */
+    border:1px solid rgb(194, 193, 193);
+    border-collapse: collapse;
   }
   .mat-toolbar-multiple-rows {
     min-height: 53px;
@@ -16,12 +16,16 @@ nav {
   border: 1px solid black;
   overflow: auto;
 }
+.myStyle{
+  background-color:  rgb(177, 177, 177);
+}
 
 thead tr th {
   position: sticky;
   top: 0;
   text-align: center;
 }
+
 
 
 thead tr{

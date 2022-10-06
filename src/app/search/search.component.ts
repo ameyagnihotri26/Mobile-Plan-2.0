@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
@@ -15,9 +16,10 @@ export class SearchComponent implements OnInit {
   dataNotFound = false;
   searchRequired = false;
   searchInputType: string = 'id';
-  dialog: any;
+  // dialog: any;
 
   constructor(private router: Router,
+    public dialog: MatDialog,
     private httpClient : HttpClient) { }
 
   ngOnInit(): void {
@@ -33,10 +35,30 @@ export class SearchComponent implements OnInit {
 
   
  
-  removePlan(id: any) {
+  removePlan = async (id: any) => {
     console.log("Show ID:" + id);
-
+    console.log("Show ID:" + id);
+    let response2 = await fetch("http://localhost:8080/mp/" + id, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    let respStatus = response2.status;
+    this.getUser();
   }
+
+  
+
+  getUser = async () => {
+    console.log("clicked");
+    let response = await fetch("http://localhost:8080/mp");
+    let res = await response.json();
+    console.log("get All User:" + JSON.stringify(res));
+    this.getResult = (res);
+
+  };
 
   createPlan() {
     this.router.navigate(['./createplan']);
@@ -111,6 +133,20 @@ export class SearchComponent implements OnInit {
     }
 
   };
+
+
+  
+  openDialog(id: any): void {
+    const dialogRef = this.dialog.open(ConfirmationdialogComponent, {
+      width: '400px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:' + result.checkStatus);
+      if (result.checkStatus == 0) {
+        this.removePlan(id);
+      }
+    });
+  }
 
 
   getSelectedSearchType(event : any){

@@ -644,11 +644,22 @@ section.why-us {
   }
 
 }
+.myStyle{
+  background-color:  rgb(190 194 197);
+}
 
 .tableWrap {
   height: 280px;
   border: 1px solid black;
   overflow: auto;
+}
+
+.mat-row:nth-child(even){
+  background-color: red;
+}
+      
+.mat-row:nth-child(odd){
+  background-color: black;
 }
 
 /* Coming Soon */
