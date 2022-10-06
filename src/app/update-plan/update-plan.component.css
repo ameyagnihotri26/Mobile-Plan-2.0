@@ -11,6 +11,19 @@
   color: #28a745;
   border-color: #28a745
 }
+.column {
+  float: left;
+  width: 36%;
+  /* padding: 10px; */
+  /* height: 300px;  */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 .text-center {
   text-align: center !important
