@@ -46,7 +46,7 @@ export class ViewallComponent implements OnInit {
 
   openDialog(id: any): void {
     const dialogRef = this.dialog.open(ConfirmationdialogComponent, {
-      width: '300px',
+      width: '600px',height: '500px',
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed:' + result.checkStatus);

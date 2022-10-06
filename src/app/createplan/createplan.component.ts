@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { CreatedialogeComponent } from '../createdialoge/createdialoge.component';
 
 @Component({
   selector: 'app-createplan',
@@ -26,7 +28,8 @@ export class CreateplanComponent implements OnInit {
   constructor(private router: Router,
     public route:ActivatedRoute,
     public toast : ToastrService,
-    public spinner : NgxSpinnerService)
+    public spinner : NgxSpinnerService,
+    public dialog: MatDialog)
      {
       
       this.route.queryParams
@@ -41,6 +44,7 @@ export class CreateplanComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
   //  this.toastRef = this.toast.show("Test",'Mobile',{
   //     disableTimeOut: true,
   //     tapToDismiss: false,
@@ -130,6 +134,13 @@ export class CreateplanComponent implements OnInit {
         return;
       }
       if(this.respStatus == 201){
+
+        const dialogRef = this.dialog.open(CreatedialogeComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog result: ${result}`);
+        });
+
        var myTimeout = setTimeout('MobilePlan', 5000);
        this.planId = undefined
        this.planName = '';
@@ -140,6 +151,10 @@ export class CreateplanComponent implements OnInit {
     
     }
   
+  }
+
+  closePopup(){
+    this.respStatus = 100;
   }
 
   resetData(){

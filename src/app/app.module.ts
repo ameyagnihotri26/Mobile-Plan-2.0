@@ -20,6 +20,8 @@ import { UpdatePlanComponent } from './update-plan/update-plan.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSelectModule} from '@angular/material/select';
+import { CreatedialogeComponent } from './createdialoge/createdialoge.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     AboutusComponent,
     UpdatePlanComponent,
     DeleteComponent,
+    CreatedialogeComponent,
     
   ],
   imports: [
@@ -39,6 +42,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
+    MatSelectModule,
     MatCardModule,
     FormsModule,
     ReactiveFormsModule,
