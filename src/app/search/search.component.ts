@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
 
 @Component({
   selector: 'app-search',
@@ -14,6 +15,7 @@ export class SearchComponent implements OnInit {
   dataNotFound = false;
   searchRequired = false;
   searchInputType: string = 'id';
+  dialog: any;
 
   constructor(private router: Router,
     private httpClient : HttpClient) { }
@@ -25,9 +27,11 @@ export class SearchComponent implements OnInit {
   
   updatePlan(data: any) {
     console.log(data);
-    this.router.navigate(['./update']);
+    this.router.navigate(['/update/'],{ queryParams: { id:data } });
   }
 
+
+  
  
   removePlan(id: any) {
     console.log("Show ID:" + id);
@@ -104,3 +108,4 @@ this.searchInputType = event.value;
   }
 
 }
+

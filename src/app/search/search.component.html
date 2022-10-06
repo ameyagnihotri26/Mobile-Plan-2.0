@@ -40,7 +40,7 @@
         #218838;border:1px solid #218838;color:white;border-radius:5px ; ">
         Search<span class="bi bi-trash red-color"></span></button><br>
       <span class="text-danger" *ngIf="searchRequired">Please enter search field</span>
-      <mat-card style="width:80%;;" *ngIf="!dataNotFound">
+      <mat-card style="width:80%;;"  *ngIf="!dataNotFound">
         <table style="width:100%;border-radius:5px" *ngIf="getResult != 0">
           <thead>
             <tr align="center">
@@ -48,6 +48,7 @@
               <th>Name</th>
               <th>Validity</th>
               <th>Description</th>
+              <th>Action</th>
             </tr>
           </thead>
 
@@ -58,9 +59,17 @@
                 <td style="padding:5px">{{item['name']}}</td>
                 <td style="padding:5px">{{item['validity']}}</td>
                 <td style="padding:5px">{{item['description']}}</td>
-  
+                
+                <td align="center" style="padding:10px">
+                  <mat-icon (click)="updatePlan(item.id)"
+                    style="font-size:20px;vertical-align: middle;cursor: pointer;color:blue"
+                    aria-hidden="false" aria-label="Example home icon"
+                    fontIcon="edit"></mat-icon>
+                  
+                </td>
               </tr>
-          
+              
+              
           </tbody>
 
 
@@ -82,7 +91,7 @@
 
       </div>
       <div class="column" style="width:50%;height:100%">
-        <img style="width:100%;height:100%" src="../../assets/search1.png"
+        <img style="width:100%;height:100%" src="../../assets/MicrosoftTeams-image (9).png"
           alt="Photo of a Shiba Inu">
       </div>
     </div>

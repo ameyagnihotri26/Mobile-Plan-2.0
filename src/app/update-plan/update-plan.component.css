@@ -39,3 +39,9 @@
   font-weight: 500;
 
 }
+.column {
+  float: left;
+  width: 36%;
+  /* padding: 10px; */
+  /* height: 300px;  */
+}
