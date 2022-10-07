@@ -46,7 +46,7 @@ export class SearchComponent implements OnInit {
       },
     });
     let respStatus = response2.status;
-    this.getUser();
+    this.searchPlan();
   }
 
   
