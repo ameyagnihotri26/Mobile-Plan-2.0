@@ -99,9 +99,12 @@ export class SearchComponent implements OnInit {
     }
     this.getResult = [];
     console.log("clicked");
-    // response = await fetch("http://localhost:8080/mp/" + this.searchText);
     
     let res = await response.json();
+    if(res.id == null){
+      this.dataNotFound = true;
+      return;
+    }
     if(res.length == 0){
       this.dataNotFound = true;
       return;
@@ -109,7 +112,6 @@ export class SearchComponent implements OnInit {
       this.dataNotFound = false;
     }
     if (res instanceof Array) {
-      //JSON Array
       for(let j=0;j< res.length;j++){
         let getObject = {
           id : res[j].id,
@@ -117,18 +119,15 @@ export class SearchComponent implements OnInit {
           description: res[j].description,
           validity: res[j].validity
         }
-        // var gett = res;
         this.getResult.push(getObject);
       }
     } else {
-      //JSON Object 
       let getObject = {
         id : res.id,
         name: res.name,
         description: res.description,
         validity: res.validity
       }
-      // var gett = res;
       this.getResult.push(getObject);
     }
 
