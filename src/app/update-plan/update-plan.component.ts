@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmlogoutComponent } from '../confirmlogout/confirmlogout.component';
 import { SnackbarComponent } from '../snackbar/snackbar.component';
 
 
@@ -32,6 +34,7 @@ export class UpdatePlanComponent implements OnInit {
   constructor(private router: Router,
     public route:ActivatedRoute,
     public toast: ToastrService,
+    public dialog: MatDialog,
     private snackBar: MatSnackBar) 
     {
       this.route.queryParams
@@ -90,7 +93,16 @@ export class UpdatePlanComponent implements OnInit {
   }
 
   gettingStarted(){
+    const dialogRef = this.dialog.open(ConfirmlogoutComponent, {
+      width: '400px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:' + result.checkStatus);
+      if (result.checkStatus == 0) {
     this.router.navigate(['./redirect']);
+      }
+    });
+
   }
 
   

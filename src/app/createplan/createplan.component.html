@@ -8,14 +8,10 @@
       <span style="font-size:15px;margin-left:15px" class="cursor-pointer selectedTab"
         (click)="createPlan()">Create</span>
       <span style="font-size:15px;margin-left:15px" class="cursor-pointer " (click)="viewPlan()">View</span>
-      <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
-        (click)="searchPlan()">Search</span>
+    
       <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
         (click)="aboutUS()">About Us</span>
   
-      <!-- <div style="width:90%"><span>Mobile Plan</span></div>
-      <div (click)="createPlan()" style="width:10%"><span>Create Plan</span></div>
-      <div style="width:10%"><span>Mobile Plan</span></div> -->
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -25,12 +21,7 @@
         <div class="row" style="width:100%;height:450px">
             <div class="column" style="margin-top:15px;width:50%">
                 <label style="font-weight:650;font-size:30px;">Create a Mobile Plan</label><br><br>
-                <!-- <div class="col" style="margin-top:15px;width:100%">
-                    <label class="form-label"><b>Plan ID*</b></label><br>
-                    <input [(ngModel)] ="planId"  type="number" style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;"  onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'"id = "id" class="form-control mb-3"><br>
-                    <span class="text-danger" *ngIf="planIdRequired && planId == undefined">Please Enter Plan ID</span>
-                </div> -->
-    
+             
     
                 <div style="margin-top:20px;width:100%">
                     <label class="form-label"><b>Plan Name*</b></label><br>
@@ -55,12 +46,7 @@
                 <div *ngIf="alreadyExist">
                     <span class="text-danger" >Mobile Plan Already Exist</span>
                 </div>
-                <!-- <div id="demo" *ngIf="respStatus == 201">
-                    <div class="plan-added-css">
-                        <span >Plan Created</span>
-                    </div>
-    
-                </div> -->
+             
               <br>
             <br>
                 <div class="text-center">

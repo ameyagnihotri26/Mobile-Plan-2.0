@@ -1,32 +1,61 @@
 <mat-toolbar style="color:white;background: black;">
   <mat-toolbar-row>
-    <span class="cursor-pointer" (click)="gettingStarted()">Mobile Plan</span>
+    <span class="cursor-pointer">Mobile Plan</span>
     <div class="row" style="width:70%">
-
     </div>
     <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
       (click)="createPlan()">Create</span>
     <span class="cursor-pointer selectedTab" (click)="viewPlan()">View</span>
     <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
-      (click)="searchPlan()">Search</span>
-    <!-- <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
-      (click)="updatePlan('')">Update</span>
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
-      (click)="deletePlan()">Delete</span> -->
-    <span style="font-size:15px;margin-left:15px" class="cursor-pointer"
       (click)="aboutUS()">About Us</span>
-
-    <!-- <div style="width:90%"><span>Mobile Plan</span></div>
-    <div (click)="createPlan()" style="width:10%"><span>Create Plan</span></div>
-    <div style="width:10%"><span>Mobile Plan</span></div> -->
+      <mat-icon style="margin-left:30px;cursor:pointer" (click)="gettingStarted()">power_settings_new</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
-
-<div style="background-image:url(../../assets/background.png) ;height:89%;padding-top:2%">
-  <mat-card style="width:80%;margin-left:10%;border-radius: 30px;opacity:0.9">
-    <div class="tableWrap">
-      <table style="width:100%;border-radius:30px" align="center">
+<div style="background-image:url(../../assets/background.png)
+  ;height:83%;padding-top:3%">
+  <mat-card style="width:80%;margin-left:10%;border-radius: 30px;opacity:0.9;height:auto"><br><br>
+    <mat-select class="mat-select-css" style="margin-left:8%" [(value)]="searchInputType"
+      (selectionChange)="getSelectedSearchType($event)">
+      <mat-option value="all" selected>All Plans</mat-option>
+      <mat-option value="id" selected>ID</mat-option>
+      <mat-option value="name">Name</mat-option>
+      <mat-option value="validity">Validity</mat-option>
+      <mat-option value="description">Description</mat-option>
+    </mat-select>&nbsp;&nbsp;
+    <input *ngIf="(searchInputType == 'id' || searchInputType == 'validity') "
+      [(ngModel)]="searchText" style="width: 45%;padding:
+      0px 5px;border-radius: 5px;border: 1px solid #b5afaf;"
+      [ngModelOptions]="{standalone: true}" type="number" placeholder="Search">
+    <input *ngIf="(searchInputType != 'id' && searchInputType != 'validity') &&
+      searchInputType != 'all' "
+      [(ngModel)]="searchText" style="width: 45%;padding:
+      0px 5px;border-radius: 5px;border: 1px solid #b5afaf;"
+      [ngModelOptions]="{standalone: true}" type="text" placeholder="Search">
+    <input *ngIf="searchInputType == 'all' " disabled [(ngModel)]="searchText"
+      style="width: 45%;padding:
+      0px 5px;border-radius: 5px;border: 1px solid #b5afaf;"
+      [ngModelOptions]="{standalone: true}" type="text" placeholder="Search">
+    <button *ngIf="searchInputType != 'all'" type="button"
+      (click)="searchPlan()" class="btn btn-success
+      cursor-pointer " id="getByID"
+      style="padding: 7px;background:
+      #218838;border:1px solid #218838;color:white;border-radius:5px
+      ;margin-left:4px; ">
+      Search<span class="bi bi-trash red-color"></span></button>
+    <button *ngIf="searchInputType == 'all'" type="button"
+      class="btn btn-success" id="getByID"
+      style="padding: 7px;background:
+      #218838;border:1px solid #218838;color:white;border-radius:5px
+      ;margin-left:4px; ">
+      Search<span class="bi bi-trash red-color"></span></button>
+    <br>
+    <span class="text-danger" style="margin-left:12%" *ngIf="searchRequired">Please
+      Enter Search Field</span>
+      <br>
+    <div class="tableWrap" *ngIf="!dataNotFound && getAllUser != 0"
+      style="margin-top:5px">
+      <table style="width:100%;border-radius:30px;margin-bottom:20px" align="center">
         <thead style="margin-bottom:20px">
           <tr>
             <th>ID</th>
@@ -37,26 +66,44 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of getAllUser;let i= index" align="center"  [ngClass]="{'myStyle': 0 === i % 2}">
+          <tr *ngFor="let item of getAllUser;let i= index" align="center"
+            [ngClass]="{'myStyle': 0 === i % 2}">
             <td style="padding:10px">{{item.id}}</td>
             <td style="padding:10px">{{item.name}}</td>
             <td style="padding:10px">{{item.validity}}</td>
             <td style="padding:10px">{{item.description}}</td>
 
-            <td align="center" style="padding:5px" >
+            <td align="center" style="padding:5px">
               <mat-icon (click)="updatePlan(item.id)"
-                style="font-size:20px;vertical-align: middle;cursor: pointer;color:rgb(8, 8, 95)"
+                style="font-size:20px;vertical-align: middle;cursor:
+                pointer;color:rgb(8, 8, 95)"
                 aria-hidden="false" aria-label="Example home icon"
                 fontIcon="edit"></mat-icon>
               <mat-icon (click)="openDialog(item.id)"
-                style="font-size:20px;vertical-align: middle;cursor: pointer;color:rgb(170, 6, 6)"
+                style="font-size:20px;vertical-align: middle;cursor:
+                pointer;color:rgb(170, 6, 6)"
                 aria-hidden="false" aria-label="Example home icon"
                 fontIcon="delete"></mat-icon>
             </td>
           </tr>
+         
         </tbody>
-    
+
       </table>
     </div>
+
+    <!-- <mat-card > -->
+      <div *ngIf="dataNotFound && (getAllUser != undefined || getAllUser == [])" style="margin-top:3%;height:70%;width:36%;margin-left:32%;">
+
+        <div style="text-align: center;padding:4px">
+          <img style="width: 50%;height:40%" src="../../assets/no data.jpg"
+            alt="Photo of a Shiba Inu">
+          <div style="text-align: center;">
+            <label style="font-size:28px;font-weight:600">Plan not found.</label>
+          </div>
+        </div>
+      </div>
+    <!-- </mat-card> -->
   </mat-card>
+
 </div>

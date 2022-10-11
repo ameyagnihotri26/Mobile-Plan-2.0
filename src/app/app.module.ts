@@ -21,7 +21,10 @@ import { DeleteComponent } from './delete/delete.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CreatedialogeComponent } from './createdialoge/createdialoge.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ConfirmlogoutComponent } from './confirmlogout/confirmlogout.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { CreatedialogeComponent } from './createdialoge/createdialoge.component'
     UpdatePlanComponent,
     DeleteComponent,
     CreatedialogeComponent,
+    ConfirmlogoutComponent,
     
   ],
   imports: [
@@ -49,6 +53,8 @@ import { CreatedialogeComponent } from './createdialoge/createdialoge.component'
     HttpClientModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
     ToastrModule.forRoot({
       timeOut: 3500,
       positionClass: 'toast-bottom-center',

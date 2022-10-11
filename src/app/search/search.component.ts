@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
+import { ConfirmlogoutComponent } from '../confirmlogout/confirmlogout.component';
 
 @Component({
   selector: 'app-search',
@@ -57,7 +58,6 @@ export class SearchComponent implements OnInit {
     let res = await response.json();
     console.log("get All User:" + JSON.stringify(res));
     this.getResult = (res);
-
   };
 
   createPlan() {
@@ -74,9 +74,17 @@ export class SearchComponent implements OnInit {
   aboutUS() {
     this.router.navigate(['./aboutus']);
   }
-
   gettingStarted(){
+    const dialogRef = this.dialog.open(ConfirmlogoutComponent, {
+      width: '400px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:' + result.checkStatus);
+      if (result.checkStatus == 0) {
     this.router.navigate(['./redirect']);
+      }
+    });
+
   }
 
   searchPlan = async () => {

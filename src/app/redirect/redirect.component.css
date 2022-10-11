@@ -617,7 +617,11 @@ section.why-us {
 
 }
 
-
+input{
+  padding:10px;
+  border-radius:5px;
+  width:100%;
+}
 /* Coming Soon */
 
 section.coming-soon {

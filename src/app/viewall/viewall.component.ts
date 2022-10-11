@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationdialog.component';
+import { ConfirmlogoutComponent } from '../confirmlogout/confirmlogout.component';
 
 @Component({
   selector: 'app-viewall',
@@ -11,8 +12,12 @@ import { ConfirmationdialogComponent } from '../confirmationdialog/confirmationd
 })
 export class ViewallComponent implements OnInit {
 
-  getAllUser: any;
+  getAllUser: any = undefined;
   durationInSeconds = 5;
+  searchInputType: string = 'all';
+  searchText = '';
+  dataNotFound = false;
+  searchRequired = false;
 
 
   constructor(private router: Router,
@@ -20,7 +25,6 @@ export class ViewallComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-   
     this.getUser();
   }
 
@@ -32,9 +36,8 @@ export class ViewallComponent implements OnInit {
     let res = await response.json();
     console.log("get All User:" + JSON.stringify(res));
     this.getAllUser = (res);
-
-    for (var i = 0; i < res.length; i++) {
-
+    if(this.getAllUser.length != 0){
+      this.dataNotFound = false;
     }
   };
 
@@ -67,7 +70,7 @@ export class ViewallComponent implements OnInit {
       },
     });
     let respStatus = response2.status;
-    this.getUser();
+    this.searchPlan();
   }
 
 
@@ -76,12 +79,66 @@ export class ViewallComponent implements OnInit {
   }
 
   viewPlan() {
-    this.router.navigate(['./viewall']);
+    this.searchInputType = 'all';
+    this.getUser();
   }
 
-  searchPlan() {
-    this.router.navigate(['./search']);
-  }
+  
+  searchPlan = async () => {
+
+    if(this.searchText == '' || this.searchText == null || this.searchText == undefined){
+      this.searchRequired = true;
+      this.dataNotFound = true;
+      this.getAllUser = [];
+      return;
+    }else{
+      this.searchRequired = false;
+    }
+    var response;
+    if(this.searchInputType == 'all'){
+      response = await fetch("http://localhost:8080/mp");
+    }else if(this.searchInputType == 'id'){
+      response = await fetch("http://localhost:8080/mp/" + this.searchText);
+    }else if(this.searchInputType == 'name'){
+      response = await fetch("http://localhost:8080/mp/name/" + this.searchText);
+    }else if(this.searchInputType == 'validity'){
+      response = await fetch("http://localhost:8080/mp/validity/" + this.searchText);
+    }else {
+      response = await fetch("http://localhost:8080/mp/description/" + this.searchText);
+    }
+    this.getAllUser = [];
+    console.log("clicked");
+    
+    let res = await response.json();
+    if(res.length == 0){
+      this.dataNotFound = true;
+      return;
+    }else{
+      this.dataNotFound = false;
+    }
+    if (res instanceof Array) {
+      for(let j=0;j< res.length;j++){
+        let getObject = {
+          id : res[j].id,
+          name: res[j].name,
+          description: res[j].description,
+          validity: res[j].validity
+        }
+        this.dataNotFound = false;
+        this.getAllUser.push(getObject);
+      }
+    } else {
+      let getObject = {
+        id : res.id,
+        name: res.name,
+        description: res.description,
+        validity: res.validity
+      }
+      this.dataNotFound = false;
+      this.getAllUser.push(getObject);
+    }
+
+  };
 
   deletePlan() {
     this.router.navigate(['./delete'])
@@ -91,6 +148,30 @@ export class ViewallComponent implements OnInit {
   }
 
   gettingStarted(){
+    const dialogRef = this.dialog.open(ConfirmlogoutComponent, {
+      width: '400px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:' + result.checkStatus);
+      if (result.checkStatus == 0) {
     this.router.navigate(['./redirect']);
+      }
+    });
+
   }
+  
+  getSelectedSearchType(event : any){
+    this.searchRequired = false;
+    console.log("get event:"+event.value);
+    this.searchInputType = event.value;
+    if(this.searchInputType == 'all'){
+      this.searchText = '';
+      this.getUser();
+    }else{
+      this.searchText = '';
+      // this.dataNotFound = true;
+      // this.getAllUser = undefined;
+    }
+      }
+    
 }

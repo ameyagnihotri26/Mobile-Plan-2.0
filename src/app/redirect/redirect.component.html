@@ -9,10 +9,62 @@
             <h2><em>Mobile</em> Plan</h2>
             <div>
                 <div class="scroll-to-section">
-                  <button  class="main-button cursor-pointer" (click)="viewPlan()">Explore</button>
+                  <!-- <button  class="main-button cursor-pointer" (click)="viewPlan()">Explore</button> -->
+                <div>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                    </mat-form-field>
+                </div>
+                    <div style="margin-top:-20px">
+                      <span class="text-danger" *ngIf="userNameRequired ">Please Enter User Name</span>
+                    </div>
+                  <div>
+                    <mat-form-field class="example-full-width">
+                      <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+                    </mat-form-field>
+                  </div>
+                  <div style="margin-top:-20px">
+                    <span class="text-danger" *ngIf="passwordRequired ">Please Enter User Password</span><br>
+                  </div>
+                  <div *ngIf="invalidCredentials" style="margin-top:-20px">
+                    <span class="text-danger" >Please Enter Valid Credentials</span><br>
+                  </div>
 
+                    <button  class="main-button cursor-pointer" mat-raised-button (click)="login()" color="primary">Login</button>
+               
                 </div>
             </div>
+            
+               
+             
         </div>
     </div>
   </section>
+
+  <!-- <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required>
+          </mat-form-field></td>
+        </tr></table>
+      </form>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="primary">Login</button>
+    </mat-card-actions>
+ </mat-card> -->
+ 

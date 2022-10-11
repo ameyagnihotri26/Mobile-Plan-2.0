@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmlogoutComponent } from '../confirmlogout/confirmlogout.component';
 import { CreatedialogeComponent } from '../createdialoge/createdialoge.component';
 
 @Component({
@@ -92,11 +93,18 @@ export class CreateplanComponent implements OnInit {
   aboutUS() {
     this.router.navigate(['./aboutus']);
   }
-
   gettingStarted(){
+    const dialogRef = this.dialog.open(ConfirmlogoutComponent, {
+      width: '400px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed:' + result.checkStatus);
+      if (result.checkStatus == 0) {
     this.router.navigate(['./redirect']);
-  }
+      }
+    });
 
+  }
 
   submitPlan = async () => {
 
