@@ -91,7 +91,7 @@ export class CreateplanComponent implements OnInit {
     this.router.navigate(['./delete'])
   }
   aboutUS() {
-    this.router.navigate(['./aboutus']);
+    window.location.href = 'http://127.0.0.1:5500/templatemo_557_grad_school/ViewLogs.html';
   }
   gettingStarted(){
     const dialogRef = this.dialog.open(ConfirmlogoutComponent, {
