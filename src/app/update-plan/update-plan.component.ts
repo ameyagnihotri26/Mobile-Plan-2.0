@@ -61,10 +61,10 @@ export class UpdatePlanComponent implements OnInit {
     }
     let res = await response.json();
     console.log("get Single User:" + JSON.stringify(res));
-    this.planId = res.id;
-    this.planName = res.name;
-    this.planValidity = res.validity;
-    this.planDesc = res.description;
+    this.planId = res[0].id;
+    this.planName = res[0].name;
+    this.planValidity = res[0].validity;
+    this.planDesc = res[0].description;
  
   }
 
