@@ -86,9 +86,9 @@ export class ViewallComponent implements OnInit {
   
   searchPlan = async () => {
 
-    if(this.searchText == '' || this.searchText == null || this.searchText == undefined){
+    if(this.searchInputType != 'all' && (this.searchText == '' || this.searchText == null || this.searchText == undefined)){
       this.searchRequired = true;
-      this.dataNotFound = true;
+      // this.dataNotFound = true;
       this.getAllUser = [];
       return;
     }else{
@@ -114,7 +114,11 @@ export class ViewallComponent implements OnInit {
       this.dataNotFound = true;
       return;
     }else{
-      this.dataNotFound = false;
+      if(res[0] != null){
+        this.dataNotFound = false;
+      }else{
+      this.dataNotFound = true;
+      }
     }
     if (res instanceof Array) {
       for(let j=0;j< res.length;j++){
@@ -169,7 +173,7 @@ export class ViewallComponent implements OnInit {
       this.getUser();
     }else{
       this.searchText = '';
-      // this.dataNotFound = true;
+      this.dataNotFound = false;
       // this.getAllUser = undefined;
     }
       }
