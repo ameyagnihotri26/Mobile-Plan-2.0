@@ -78,6 +78,10 @@ export class ViewallComponent implements OnInit {
     this.router.navigate(['./createplan']);
   }
 
+  view(){
+    this.router.navigate(['./viewall']);
+  }
+
   viewPlan() {
     this.searchInputType = 'all';
     this.getUser();
@@ -174,6 +178,7 @@ export class ViewallComponent implements OnInit {
     }else{
       this.searchText = '';
       this.dataNotFound = false;
+      this.getUser();
       // this.getAllUser = undefined;
     }
       }

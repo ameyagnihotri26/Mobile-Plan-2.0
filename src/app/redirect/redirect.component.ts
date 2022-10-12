@@ -71,4 +71,16 @@ export class RedirectComponent implements OnInit {
   viewPlan() {
     this.router.navigate(['./viewall']);
   }
+
+//   checkUserName(event: any){
+// if(this.username != ''){
+//   this.userNameRequired = false;
+// }
+//   }
+
+//   checkUserPassword(event: any){
+//     if(this.password != ''){
+//       this.passwordRequired = false;
+//     }
+//   }
 }
