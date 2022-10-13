@@ -1,15 +1,17 @@
 <!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
-<div mat-dialog-content>
-  <p style="font-size:18px;font-weight:500">Are you sure, you want to delete?</p>
- 
+<div mat-dialog-content  style="overflow:hidden; height: 10rem;">
+  <p style="font-size:18px;font-weight:500 ;margin-top: 10px;">Are you sure, you want to delete?</p>
+  <div class="text-center">
+    <img style="height:9rem;" src="https://im3.ezgif.com/tmp/ezgif-3-f5171d20be.gif">
+  </div>
 </div>
 <div mat-dialog-actions class="text-center">
   <!-- <button mat-button (click)="cancel()">Cancel</button>&nbsp;
   <button mat-button (click)="remove()" cdkFocusInitial>Delete</button> -->
-  <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer" (click)="remove()">
+  <button type="button" id = "submit" class="btn btn-outline-danger mt-4 btn-lg cursor-pointer" style="background-color: #162238; color: white;" (click)="remove()">
     Delete</button>&nbsp;&nbsp;
 
-  <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer" (click)="cancel()">
+  <button type="button" id = "submit" class="btn btn-outline-danger mt-4 btn-lg cursor-pointer" style="background-color: #162238; color: white;" (click)="cancel()">
     Cancel</button>
   
 </div>

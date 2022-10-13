@@ -34,6 +34,7 @@ export class DeleteComponent implements OnInit {
     //this.getUser();
     if (this.respStatus == 200) {
       this.getId = undefined;
+      
     }
     if (this.respStatus == 404) {
       this.requiredId = false;

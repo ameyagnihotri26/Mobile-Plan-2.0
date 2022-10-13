@@ -1,11 +1,13 @@
 <!-- <h1 mat-dialog-title>Hi {{data.name}}</h1> -->
-<div mat-dialog-content>
-    <p style="font-size:18px;font-weight:500">Plan created successfully with ID {{getPlanId}}.</p>
-   
+<div mat-dialog-content style="overflow:hidden; height: 10rem;" >
+  
+    <p style="font-size:18px;font-weight:500">Plan Created Successfully With ID {{getPlanId}}.</p>
+    <div class="text-center">
+    <img style="height:50px;" src="https://media.tenor.com/0AVbKGY_MxMAAAAM/check-mark-verified.gif">
   </div>
   <div class="text-center" style="margin-bottom:-10px">
 
-    <button type="button" id = "submit" class="btn btn-outline-success btn-lg cursor-pointer" (click)="remove()">
-      Ok</button>
-  
+    <button type="button" id = "submit"  class="btn btn-outline-danger mt-4 btn-lg cursor-pointer" style="background-color: #162238; color: white; height: 48x; width: 48px;" (click)="remove()">
+      OK</button>
+    
   </div>

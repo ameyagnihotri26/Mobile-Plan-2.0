@@ -17,7 +17,7 @@
     ;height:87%;padding-top:2%">
     <mat-card style="width:80%;margin-left:10%;border-radius: 30px; background-color: #d5ccd8;">
         <div class="row" style="width:100%;height:450px">
-            <div class="column" style="width:50%">
+            <div class="column" style="margin-top:15px;width:50%">
                 <label style="font-weight:650;font-size:30px;">Update a Mobile
                     Plan</label><br><br>
                 <div class="col" style="margin-top:15px;width:100%">
@@ -35,7 +35,7 @@
                 <div style="margin-top:15px;width:100%">
                     <label class="form-label"><b>Plan Name*</b></label><br>
                     <input [(ngModel)]="planName" style="width: 90%;padding:
-                        10px;border-radius: 5px;border: 1px solid #b5afaf;"
+                        10px;border-radius: 5px;border: 1px solid #b5afaf; font-family:Verdana, Geneva, Tahoma, sans-serif" placeholder="Enter Plan Name"
                         type="text" id="name" class="form-control mb-3"><br>
                     <span class="text-danger" *ngIf="planNameRequired &&
                         (planName =='' || planName ==undefined) ">Please
@@ -45,7 +45,7 @@
                     <label class="form-label"><b>Plan Validity*</b></label><br>
                     <input [(ngModel)]="planValidity" style="width:
                         90%;padding: 10px;border-radius: 5px;border: 1px
-                        solid #b5afaf;margin-top:3px" type="number"
+                        solid #b5afaf;margin-top:3px; font-family:Verdana, Geneva, Tahoma, sans-serif" placeholder="Enter Validity (In Days)" type="number"
                         onkeydown="javascript: return
                         ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code)
                         ? true : !isNaN(Number(event.key)) &&
@@ -59,7 +59,7 @@
                     <label class="form-label"><b>Plan Description</b></label><br>
                     <textarea [(ngModel)]="planDesc" style="width:
                         90%;padding: 10px;border-radius: 5px;border: 1px
-                        solid #b5afaf;margin-top:3px"
+                        solid #b5afaf; margin-top:3px; font-family:Verdana, Geneva, Tahoma, sans-serif; " placeholder="Enter Description"
                         class="form-control" id="description">
                     </textarea>
                 </div>

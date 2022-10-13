@@ -27,21 +27,21 @@
     
                 <div style="margin-top:20px;width:100%">
                     <label class="form-label"><b>Plan Name*</b></label><br>
-                    <input [(ngModel)] ="planName"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" type="text" id = "name" class="form-control mb-3"><br>
+                    <input [(ngModel)] ="planName"  style="margin-top:3px;width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;font-family:Verdana, Geneva, Tahoma, sans-serif" placeholder="Enter Plan Name" type="text" id = "name" class="form-control mb-3"><br>
                     <span class="text-danger" *ngIf="planNameRequired && (planName =='' || planName ==undefined) ">Please Enter Plan Name</span>
                 </div>
                 
     
                 <div style="margin-top:15px;width:100%">
                     <label class="form-label"><b>Plan Validity*</b></label><br>
-                    <input [(ngModel)] ="planValidity"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" placeholder="In Days" type="number" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" id = "validity" class="form-control mb-3"><br>
+                    <input [(ngModel)] ="planValidity"  style="margin-top:3px;width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;font-family:Verdana, Geneva, Tahoma, sans-serif" placeholder="Enter Validity (In Days)" type="number" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" id = "validity" class="form-control mb-3"><br>
                     <span class="text-danger" *ngIf="planValidityRequired && planValidity == undefined">Please Enter Plan Validity</span>
     
                 </div>
     
                 <div style="margin-top:15px;width:100%">
                     <label class="form-label"><b>Plan Description</b></label><br>
-                    <textarea [(ngModel)] ="planDesc"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" class="form-control" id="description">
+                    <textarea [(ngModel)] ="planDesc"  style=" margin-top:3px; width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf; font-family:Verdana, Geneva, Tahoma, sans-serif; " placeholder="Enter Description" class="form-control" id="description">
                     </textarea>
                 </div>
     
