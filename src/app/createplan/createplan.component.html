@@ -17,9 +17,9 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <div style="background-image:url(../../assets/background.png) ;height:87%;padding-top:2%">
+ <div style="background-image:url(../../assets/choosing-bg.jpg) ;height:87%;padding-top:2%">
 <div style="height:87%;padding-top:2%">
-    <mat-card  style="width:80%;margin-left:10%;border-radius: 30px;opacity:0.9">
+    <mat-card style="width:80%;margin-left:10%;border-radius: 30px;opacity:0.9;height:auto; background-color: #d5ccd8;">
         <div class="row" style="width:100%;height:450px">
             <div class="column" style="margin-top:15px;width:50%">
                 <label style="font-weight:650;font-size:30px;">Create a Mobile Plan</label><br><br>
@@ -34,7 +34,7 @@
     
                 <div style="margin-top:15px;width:100%">
                     <label class="form-label"><b>Plan Validity*</b></label><br>
-                    <input [(ngModel)] ="planValidity"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" type="number" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" id = "validity" class="form-control mb-3"><br>
+                    <input [(ngModel)] ="planValidity"  style="width: 90%;padding: 10px;border-radius: 5px;border: 1px solid #b5afaf;" placeholder="In Days" type="number" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" id = "validity" class="form-control mb-3"><br>
                     <span class="text-danger" *ngIf="planValidityRequired && planValidity == undefined">Please Enter Plan Validity</span>
     
                 </div>
@@ -52,14 +52,14 @@
               <br>
             <br>
                 <div class="text-center">
-                    <button type="button" id = "submit" class="button btn-outline-success mt-4 btn-lg cursor-pointer " (click)="submitPlan()">
+                    <button type="button" id = "submit" class="btn btn-outline-danger mt-4 btn-lg cursor-pointer" style="background-color: #162238; color: white;" (click)="submitPlan()">
                         Create</button>&nbsp;&nbsp;
-                        <button type="button" id = "submit" class="btn btn-outline-success mt-4 btn-lg cursor-pointer" (click)="resetData()">
+                        <button type="button" id = "submit" class="btn btn-outline-danger mt-4 btn-lg cursor-pointer" style="background-color: #162238; color: white;" (click)="resetData()">
                             Reset</button>
                 </div>
             </div>
             <div class="column" style="width:50%;height:100%">
-                    <img style="width:100%;height:100%" src="../../assets/MicrosoftTeams-image (7).png" alt="Photo of a Shiba Inu">
+                    <img style="width:100%;height:100%" src="https://mtjobsolution.com/wp-content/uploads/2022/06/ab056a_a8cfa7317713482dbf3047c04719a41c_mv2.gif" alt="Photo of a Shiba Inu">
             </div>
           </div>
      

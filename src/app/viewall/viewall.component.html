@@ -12,11 +12,12 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div style="background-image:url(../../assets/background.png)
+<div style="background-image:url(../../assets/choosing-bg.jpg)
   ;height:83%;padding-top:3%">
-  <mat-card style="width:80%;margin-left:10%;border-radius: 30px;opacity:0.9;height:auto"><br><br>
-    <mat-select class="mat-select-css" style="margin-left:8%" [(value)]="searchInputType"
-      (selectionChange)="getSelectedSearchType($event)">
+  <mat-card style="width:80%;margin-left:10%;border-radius: 30px;opacity:0.9;height:auto; background-color: #d5ccd8;"><br>
+    
+    <mat-select class="mat-select-css" style="margin-left:15% ; background-color: white;" [(value)]="searchInputType"
+      (selectionChange)="getSelectedSearchType($event)"> 
       <mat-option value="all" selected>All Plans</mat-option>
       <mat-option value="id" selected>ID</mat-option>
       <mat-option value="name">Name</mat-option>
@@ -40,13 +41,13 @@
       (click)="searchPlan()" class="btn btn-success
       cursor-pointer " id="getByID"
       style="padding: 7px;background:
-      #218838;border:1px solid #218838;color:white;border-radius:5px
+       #162238;border:1px solid #242188;color:white;border-radius:5px
       ;margin-left:4px; ">
       Search<span class="bi bi-trash red-color"></span></button>
     <button *ngIf="searchInputType == 'all'" type="button"
       class="btn btn-success" id="getByID"
       style="padding: 7px;background:
-      #218838;border:1px solid #218838;color:white;border-radius:5px
+      #162238;border:1px solid #242188;color:white;border-radius:5px
       ;margin-left:4px; ">
       Search<span class="bi bi-trash red-color"></span></button>
     <br>
